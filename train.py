@@ -75,7 +75,7 @@ model.add_node(BatchNormalization(), name='picked4Norm', input='picked4Act')
 model.add_node(Dropout(0.5), name='picked4Dropout', input='picked4Norm')
 
 
-model.add_node(Dense(pack_card_count), name='sum1', inputs='picked4Dropout')
+model.add_node(Dense(pack_card_count), name='sum1', input='picked4Dropout')
 model.add_node(Activation('softmax'), name='res', inputs=['sum1','pack'], merge_mode='mul')
 model.add_output(name='output', input='res')
 optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.99, epsilon=1e-08)
